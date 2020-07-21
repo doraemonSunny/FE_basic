@@ -1,6 +1,6 @@
 # CSS相关
 
-#### 浏览器渲染过程
+#### 一、浏览器渲染过程
 
 
 
@@ -14,9 +14,9 @@
 4. Painting(重绘):根据渲染树以及回流得到的几何信息，得到节点的绝对像素
 5. Display:将像素发送给GPU，展示在页面上。
 
+---
 
-
-#### 重绘与回流
+#### 二、重绘与回流
 
 当元素的样式发生变化时，浏览器需要触发更新，重新绘制元素。这个过程中，有两种类型的操作，即重绘与回流。
 
@@ -54,9 +54,9 @@
   - 极限优化时，修改样式可将其`display: none`后修改
   - 避免多次触发上面提到的那些会触发回流的方法，可以的话尽量用 **变量存住**
 
+---
 
-
-#### 浏览器的主线程和合成线程
+#### 三、浏览器的主线程和合成线程
 
 **主线程的主要任务：**
 
@@ -92,15 +92,15 @@
 
 CSS的最终表现分为以下四步：`Recalculate Style` -> `Layout` -> `Paint Setup and Paint` -> `Composite Layers`，以上属性位于`Composite Layers`（组合层）。
 
+---
 
-
-#### 怎么清除无用的css样式
+#### 四、怎么清除无用的css样式
 
 [PurgeCSS](https://github.com/FullHuman/purgecss)
 
+---
 
-
-#### 层叠上下文 Stacking Context
+#### 五、层叠上下文 Stacking Context
 
 文档中的层叠上下文由满足以下任意一个条件的元素形成：
 
@@ -130,15 +130,13 @@ CSS的最终表现分为以下四步：`Recalculate Style` -> `Layout` -> `Paint
 - 每个层叠上下文都完全独立于它的兄弟元素：当处理层叠时只考虑子元素。
 - 每个层叠上下文都是自包含的：当一个元素的内容发生层叠后，该元素将被作为整体在父级层叠上下文中按顺序进行层叠。
 
-
-
-#### 7阶层叠
+**7阶层叠**
 
 ![image-20200421104603251](/Users/wangjia/Library/Application Support/typora-user-images/image-20200421104603251.png)
 
+---
 
-
-#### JS判断浏览器是否支持CSS3
+#### 六、JS判断浏览器是否支持CSS3
 
 各主流浏览器都定义了私有属性，以便让用户体验 CSS3 的新特性。例如，
 
@@ -172,9 +170,9 @@ function supportCss3(style) {
 }  
 ```
 
+---
 
-
-#### grid布局
+#### 七、grid布局
 
 兼容性：Chrome: 57+    Firefox: 52+   IE: 10+   Safari: 10.1+   Opera: 44+    ios: 10.3+    Android: 5+
 
@@ -190,9 +188,9 @@ function supportCss3(style) {
 }
 ```
 
+---
 
-
-#### link 与 @import 区别
+#### 八、link 与 @import 区别
 
 - `link`功能较多，可以定义 RSS，定义 Rel 等作用，而`@import`只能用于加载 css
 - 当解析到`link`时，页面会同步加载所引的 css，而`@import`所引用的 css 会等到页面加载完才被加载

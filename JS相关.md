@@ -27,7 +27,7 @@
 - **属性查找机制**: 当查找对象的属性时，如果实例对象自身不存在该属性，则沿着原型链往上一级查找，找到时则输出，不存在时，则继续沿着原型链往上一级查找，直至最顶级的原型对象`Object.prototype`，如还是没找到，则输出`undefined`；
 - **属性修改机制**: 只会修改实例对象本身的属性，如果不存在，则进行添加该属性，如果需要修改原型的属性时，则可以用: `b.prototype.x = 2`；但是这样会造成所有继承于该对象的实例的属性发生改变。
 
-
+---
 
 #### 二、new 的实现原理
 
@@ -49,7 +49,7 @@ function _new () {
 }
 ```
 
-
+---
 
 #### 三、ES5的继承方式
 
@@ -67,7 +67,7 @@ function _new () {
 
 [还有4种](https://www.jianshu.com/p/72fea052ed05)
 
-
+---
 
 #### 四、执行上下文
 
@@ -87,7 +87,7 @@ function _new () {
   - 函数执行上下文被激活，成为 active EC, 开始执行函数中的代码，caller 被挂起
   - 函数执行完后，callee 被`pop`移除出执行栈，控制权交还全局上下文 (caller)，继续执行
 
-
+---
 
 #### 五、Event Loop
 
@@ -108,7 +108,7 @@ Event Loop即事件循环，是指浏览器或Node的一种解决JavaScript单�
 
 [参考](https://zhuanlan.zhihu.com/p/55511602)
 
-
+---
 
 #### 六、闭包
 
@@ -194,7 +194,7 @@ Event Loop即事件循环，是指浏览器或Node的一种解决JavaScript单�
    > - 必须有外部的封闭函数，该函数必须至少被调用一次(每次调用都会创建一个新的模块实例)
    > - 封闭函数必须返回至少**一个**内部函数，这样内部函数才能在私有作用域中形成闭包，并且可以访问或者修改私有的状态。
 
-
+---
 
 #### 七、类型转换
 
@@ -211,7 +211,7 @@ Event Loop即事件循环，是指浏览器或Node的一种解决JavaScript单�
 4. `{}.toString() === '[object object]'`
 5. `NaN!== NaN` 、+undefined 为 NaN
 
-
+---
 
 #### 八、[Arguments 对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments)
 
@@ -221,7 +221,7 @@ Event Loop即事件循环，是指浏览器或Node的一种解决JavaScript单�
 
 如果调用的参数多于正式声明接受的参数，则可以使用`arguments`对象。这种技术对于可以传递可变数量的参数的函数很有用。使用 `arguments.length`来确定传递给函数参数的个数，然后使用`arguments`对象来处理每个参数。要确定函数[签名](https://developer.mozilla.org/zh-CN/docs/Glossary/Signature/Function)中（输入）参数的数量，请使用`Function.length`属性。
 
-
+---
 
 #### 九、函数柯里化
 
@@ -249,13 +249,13 @@ console.log(sum(2)(3, 5)); // 10
 console.log(sum(2, 3)(5)); // 10
 ```
 
-
+---
 
 #### 十、抽象语法树 (AST: Abstract Syntax Tree)
 
 是将代码逐字母解析成 **树状对象** 的形式。这是语言之间的转换、代码语法检查，代码风格检查，代码格式化，代码高亮，代码错误提示，代码自动补全等等的基础。
 
-
+---
 
 #### 十一、babel编译原理
 
@@ -263,7 +263,7 @@ console.log(sum(2, 3)(5)); // 10
 - babel-traverse 对 AST 进行遍历转译，得到新的 AST
 - 新 AST 通过 babel-generator 转换成 ES5
 
-
+---
 
 #### 十二、JSONP的原理
 
@@ -294,7 +294,7 @@ function jsonp({url, params, callback}) {
 }
 ```
 
-
+---
 
 ####十三、JSBridge原理
 
@@ -323,7 +323,7 @@ JavaScript单独运行在一个JS Context中，与原生运行环境天然隔离
 
    web定义在window上的全局方法，native直接调用。
 
-
+---
 
 #### 十四、求字符长度
 
