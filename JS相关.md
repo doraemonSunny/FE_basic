@@ -1,6 +1,6 @@
 # JS相关
 
-#### 一、原型/构造函数/实例/原型链
+### 一、原型/构造函数/实例/原型链
 
 **1. 原型`(prototype)`**
 
@@ -29,7 +29,7 @@
 
 ---
 
-#### 二、new 的实现原理
+### 二、new 的实现原理
 
 1. 创建一个空对象，构造函数中的this指向这个空对象
 2. 这个新对象被执行 [[原型]] 连接
@@ -51,7 +51,7 @@ function _new () {
 
 ---
 
-#### 三、ES5的继承方式
+### 三、ES5的继承方式
 
 1. 原型链：将一个类型的实例赋值给另一个构造函数的原型
 
@@ -69,7 +69,7 @@ function _new () {
 
 ---
 
-#### 四、执行上下文
+### 四、执行上下文
 
 执行上下文可以简单理解为一个对象:
 
@@ -89,7 +89,7 @@ function _new () {
 
 ---
 
-#### 五、Event Loop
+### 五、Event Loop
 
 Event Loop即事件循环，是指浏览器或Node的一种解决JavaScript单线程运行时不会阻塞的一种机制，也就是我们经常使用**异步**的原理。
 
@@ -110,7 +110,7 @@ Event Loop即事件循环，是指浏览器或Node的一种解决JavaScript单�
 
 ---
 
-#### 六、闭包
+### 六、闭包
 
 > 闭包属于一种特殊的作用域，称为 **静态作用域**。它的定义可以理解为: **父函数被销毁** 的情况下，返回出的子函数的`[[scope]]`中仍然保留着父级的单变量对象和作用域链，因此可以继续访问到父级的变量对象，这样的函数称为闭包。
 
@@ -196,7 +196,7 @@ Event Loop即事件循环，是指浏览器或Node的一种解决JavaScript单�
 
 ---
 
-#### 七、类型转换
+### 七、类型转换
 
 1. -、*、/、% ：一律转换成数值后计算
 
@@ -213,7 +213,7 @@ Event Loop即事件循环，是指浏览器或Node的一种解决JavaScript单�
 
 ---
 
-#### 八、[Arguments 对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments)
+### 八、[Arguments 对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments)
 
 `arguments`对象是所有（非箭头）函数中都可用的**局部变量**。你可以使用`arguments`对象在函数中引用函数的参数：`arguments[0]`。
 
@@ -223,7 +223,7 @@ Event Loop即事件循环，是指浏览器或Node的一种解决JavaScript单�
 
 ---
 
-#### 九、函数柯里化
+### 九、函数柯里化
 
 在一个函数中，首先填充几个参数，然后再返回一个新的函数的技术，称为函数的柯里化。通常可用于在不侵入函数的前提下，为函数预置通用参数，供多次重复调用。
 
@@ -251,13 +251,13 @@ console.log(sum(2, 3)(5)); // 10
 
 ---
 
-#### 十、抽象语法树 (AST: Abstract Syntax Tree)
+### 十、抽象语法树 (AST: Abstract Syntax Tree)
 
 是将代码逐字母解析成 **树状对象** 的形式。这是语言之间的转换、代码语法检查，代码风格检查，代码格式化，代码高亮，代码错误提示，代码自动补全等等的基础。
 
 ---
 
-#### 十一、babel编译原理
+### 十一、babel编译原理
 
 - babylon 将 ES6/ES7 代码解析成 AST
 - babel-traverse 对 AST 进行遍历转译，得到新的 AST
@@ -265,7 +265,7 @@ console.log(sum(2, 3)(5)); // 10
 
 ---
 
-#### 十二、JSONP的原理
+### 十二、JSONP的原理
 
 尽管浏览器有同源策略，但是 标签的 `src` 属性不会被同源策略所约束，可以获取任意服务器上的脚本并执行。`jsonp` 通过插入 `script` 标签的方式来实现跨域，参数只能通过 `url` 传入，仅能支持 `get `请求。
 
@@ -296,7 +296,7 @@ function jsonp({url, params, callback}) {
 
 ---
 
-####十三、JSBridge原理
+### 十三、JSBridge原理
 
 JavaScript单独运行在一个JS Context中，与原生运行环境天然隔离。我们可以将这种情况与 RPC（Remote Procedure Call，远程过程调用）通信进行类比，将 Native 与 JavaScript 的每次互相调用看做一次 RPC 调用。
 
@@ -325,7 +325,7 @@ JavaScript单独运行在一个JS Context中，与原生运行环境天然隔离
 
 ---
 
-#### 十四、求字符长度
+### 十四、求字符长度
 
 charCodeAt(n):以Unicode编码返回指定位置索引。由于中文字符Unicode编码大于255，故而能够得出一个字符串的实际长度。
 
@@ -340,5 +340,57 @@ function strLength(str) {
 }
 ```
 
+---
 
+### 十五、模块加载
 
+**ES6模块与CommonJS模块的差异：**
+
+- CommonJS模块输出的是一个值的拷贝，ES6模块输出的是值的动态引用。
+
+  *CommonJS输出的是值的拷贝，所以一旦输出一个值，模块内部的变化就影响不到这个值，除非模块通过内部的函数获取这个值。*
+
+  *ES6 模块，JS引擎对脚本静态分析时，遇到import会生成一个只读引用，原始值变了，import加载的值也会跟着变。但这个变量是只读的，对它进行重新赋值会报错，如果变量是对象，可以改变其对象，变量指向地址是只读的。*
+
+- CommonJS模块是运行时加载，ES6模块是编译时输出接口。
+
+  *因为CommonJS加载的是一个对象（即module.exports属性），该对象只有在脚本运行完才会生成。而ES6模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。*
+
+**CommonJS模块的加载原理：**
+
+CommonJS 的一个模块，就是一个脚本文件。`require`命令第一次加载该脚本，就会执行整个脚本，然后在内存生成一个对象。
+
+```javascript
+{
+  id: '...',
+  exports: { ... },
+  loaded: true,
+  ...
+}
+```
+
+上面代码就是 Node 内部加载模块后生成的一个对象。该对象的`id`属性是模块名，`exports`属性是模块输出的各个接口，`loaded`属性是一个布尔值，表示该模块的脚本是否执行完毕。其他还有很多属性，这里都省略了。
+
+以后需要用到这个模块的时候，就会到`exports`属性上面取值。即使再次执行`require`命令，也不会再次执行该模块，而是到缓存之中取值。也就是说，CommonJS 模块无论加载多少次，都只会在第一次加载时运行一次，以后再加载，就返回第一次运行的结果，除非手动清除系统缓存。
+
+**ES6 的模块自动采用严格模式，不管你有没有在模块头部加上`"use strict";`。**
+
+严格模式主要有以下限制：
+
+- 变量必须声明后再使用
+- 函数的参数不能有同名属性，否则报错
+- 不能使用`with`语句
+- 不能对只读属性赋值，否则报错
+- 不能使用前缀 0 表示八进制数，否则报错
+- 不能删除不可删除的属性，否则报错
+- 不能删除变量`delete prop`，会报错，只能删除属性`delete global[prop]`
+- `eval`不会在它的外层作用域引入变量
+- `eval`和`arguments`不能被重新赋值
+- `arguments`不会自动反映函数参数的变化
+- 不能使用`arguments.callee`
+- 不能使用`arguments.caller`
+- 禁止`this`指向全局对象
+- 不能使用`fn.caller`和`fn.arguments`获取函数调用的堆栈
+- 增加了保留字（比如`protected`、`static`和`interface`）
+
+[Module的语法](https://es6.ruanyifeng.com/#docs/module) 
